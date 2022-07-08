@@ -1,0 +1,28 @@
+{
+  "name": "SVProgressHUD",
+  "version": "1.0.0",
+  "summary": "SVProgressHUD",
+  "description": "SVProgressHUD Pods",
+  "homepage": "https://macrovideo.com",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "macrovideo": "macrovideo.com"
+  },
+  "platforms": {
+    "ios": "9.0"
+  },
+  "source": {
+    "git": "https://macrovideo.com",
+    "tag": "1.0.0"
+  },
+  "resources": "SVProgressHUD/**/*.bundle",
+  "subspecs": [
+    {
+      "name": "SVProgressHUD",
+      "source_files": "SVProgressHUD/**/*.{h,m}"
+    }
+  ]
+}

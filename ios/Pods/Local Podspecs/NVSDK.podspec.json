@@ -1,0 +1,32 @@
+{
+  "name": "NVSDK",
+  "version": "1.0.0",
+  "summary": "NVSDK",
+  "description": "NVSDK Pods",
+  "homepage": "https://macrovideo.com",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "macrovideo": "macrovideo.com"
+  },
+  "pod_target_xcconfig": {
+    "OTHER_LDFLAGS": "-ObjC",
+    "ENABLE_BITCODE": "NO"
+  },
+  "platforms": {
+    "ios": "9.0"
+  },
+  "source": {
+    "git": "https://macrovideo.com",
+    "tag": "1.0.0"
+  },
+  "vendored_libraries": "NVSDK/*.a",
+  "subspecs": [
+    {
+      "name": "NVSDK",
+      "source_files": "NVSDK/**/*.{h,m}"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+framework module ALAssetsLibrary {
+  umbrella header "ALAssetsLibrary-umbrella.h"
+
+  export *
+  module * { export * }
+}

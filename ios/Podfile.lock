@@ -1,0 +1,45 @@
+PODS:
+  - ALAssetsLibrary (1.0.0):
+    - ALAssetsLibrary/ALAssetsLibrary (= 1.0.0)
+  - ALAssetsLibrary/ALAssetsLibrary (1.0.0)
+  - lottie-ios (2.5.3)
+  - NVSDK (1.0.0):
+    - NVSDK/NVSDK (= 1.0.0)
+  - NVSDK/NVSDK (1.0.0)
+  - SDWebImage (5.9.1):
+    - SDWebImage/Core (= 5.9.1)
+  - SDWebImage/Core (5.9.1)
+  - SVProgressHUD (1.0.0):
+    - SVProgressHUD/SVProgressHUD (= 1.0.0)
+  - SVProgressHUD/SVProgressHUD (1.0.0)
+
+DEPENDENCIES:
+  - ALAssetsLibrary (from `LocalPods/ALAssetsLibrary/ALAssetsLibrary.podspec`)
+  - lottie-ios (= 2.5.3)
+  - NVSDK (from `LocalPods/NVSDK/NVSDK.podspec`)
+  - SDWebImage (= 5.9.1)
+  - SVProgressHUD (from `LocalPods/SVProgressHUD/SVProgressHUD.podspec`)
+
+SPEC REPOS:
+  trunk:
+    - lottie-ios
+    - SDWebImage
+
+EXTERNAL SOURCES:
+  ALAssetsLibrary:
+    :path: LocalPods/ALAssetsLibrary/ALAssetsLibrary.podspec
+  NVSDK:
+    :path: LocalPods/NVSDK/NVSDK.podspec
+  SVProgressHUD:
+    :path: LocalPods/SVProgressHUD/SVProgressHUD.podspec
+
+SPEC CHECKSUMS:
+  ALAssetsLibrary: f95b327b326618ecfb0eef5b5c703a679e8e7598
+  lottie-ios: a50d5c0160425cd4b01b852bb9578963e6d92d31
+  NVSDK: 4110d480bc3a5fe56e728774685dc84d2334f9eb
+  SDWebImage: a990c053fff71e388a10f3357edb0be17929c9c5
+  SVProgressHUD: 43cbbf6913589d08313dcb1d0a3593bad49b72e1
+
+PODFILE CHECKSUM: 28c37aed9d3a5f82f7b64fdf99ad1cfb1a859f33
+
+COCOAPODS: 1.11.3

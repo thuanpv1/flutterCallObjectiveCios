@@ -1,0 +1,1 @@
+../../../../LocalPods/NVSDK/NVSDK/include/NVDevice.h

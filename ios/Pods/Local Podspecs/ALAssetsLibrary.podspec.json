@@ -1,0 +1,27 @@
+{
+  "name": "ALAssetsLibrary",
+  "version": "1.0.0",
+  "summary": "ALAssetsLibrary",
+  "description": "ALAssetsLibrary Pods",
+  "homepage": "https://macrovideo.com",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "macrovideo": "macrovideo.com"
+  },
+  "platforms": {
+    "ios": "9.0"
+  },
+  "source": {
+    "git": "https://macrovideo.com",
+    "tag": "1.0.0"
+  },
+  "subspecs": [
+    {
+      "name": "ALAssetsLibrary",
+      "source_files": "ALAssetsLibrary/**/*.{h,m}"
+    }
+  ]
+}
