@@ -1,0 +1,54 @@
+//
+//  PrefixHeader.pch
+//  demo
+//
+//  Created by MacroVideo on 2018/1/13.
+//  Copyright © 2018年 Macrovideo. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+#import "AppDelegate.h"
+#import "LoginHandle.h"
+#import "NVDevice.h"
+#import "DefineVars.h"
+#import "NVDeviceConfigInfo.h"
+#import "ResultCode.h"
+#import "NSString+MD5.h"
+#import "NSString+Formatter.h"
+#import "DeviceManager.h"
+#define kWidth [UIScreen mainScreen].bounds.size.width
+#define kHeight [UIScreen mainScreen].bounds.size.height
+
+#define SCALE_WIDTH(w) ((kWidth / 375) * w)
+#define SCALE_HEIGHT(h) ((kHeight / 667) * h)
+
+#define LIGHT_GRAY_COLOR  [UIColor colorWithRed:236/255.0 green:236/255.0 blue:239/255.0 alpha:1.0]  //浅灰色
+
+#define X_WeakSelf __weak typeof(self) weakSelf = self;
+#define X_StrongSelf __strong typeof(weakSelf) strongSelf = weakSelf;
+
+#define kScaleX (([UIScreen mainScreen].bounds.size.width/375.0) > 1.0 ? 1.0 : ([UIScreen mainScreen].bounds.size.width/375.0))
+#define kScaleY (([UIScreen mainScreen].bounds.size.height/667.0) > 1.0 ? 1.0 : ([UIScreen mainScreen].bounds.size.height/667.0))
+
+#define TranslucentEnabled(enable) \
+if (@available(iOS 11.0, *)){ \
+} \
+else{ \
+    self.navigationController.navigationBar.translucent = enable; \
+} \
+
+#define SSTranslucentEnabled(enable) \
+if (@available(iOS 11.0, *)){ \
+} \
+else{ \
+    ss.navigationController.navigationBar.translucent = enable; \
+} \
+
+
+#define kStatusBar_Height [[UIApplication sharedApplication] statusBarFrame].size.height
+#define kNavgationBar_Height self.navigationController.navigationBar.frame.size.height
+#define kNavgationBar_Height_InView ((AppDelegate*)[UIApplication sharedApplication].delegate).serverList.navigationController.navigationBar.frame.size.height
+#define kTabbar_Height self.tabBarController.tabBar.frame.size.height
+
+#endif /* PrefixHeader_pch */
