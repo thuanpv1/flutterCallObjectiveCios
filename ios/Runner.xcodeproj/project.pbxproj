@@ -14,6 +14,10 @@
 		84927B4E2876C40900033B3D /* FLPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 84927B4D2876C40900033B3D /* FLPlugin.m */; };
 		84A57B4A2877C85700412F53 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 84A57B492877C85700412F53 /* Podfile */; };
 		84A57B4C2877C89100412F53 /* LocalPods in Resources */ = {isa = PBXBuildFile; fileRef = 84A57B4B2877C89100412F53 /* LocalPods */; };
+		84BFDCA9287924760096A406 /* ALAssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84BFDCA8287924760096A406 /* ALAssetsLibrary.framework */; };
+		84BFDCAB287926730096A406 /* Lottie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84BFDCAA287926730096A406 /* Lottie.framework */; };
+		84BFDCAD287926730096A406 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84BFDCAC287926730096A406 /* SDWebImage.framework */; };
+		84BFDCAF287926730096A406 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84BFDCAE287926730096A406 /* SVProgressHUD.framework */; };
 		978B8F6F1D3862AE00F588F7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFFD8EE1D35381100E5BB4D /* AppDelegate.m */; };
 		97C146F31CF9000F007C117D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 97C146F21CF9000F007C117D /* main.m */; };
 		97C146FC1CF9000F007C117D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FA1CF9000F007C117D /* Main.storyboard */; };
@@ -48,6 +52,10 @@
 		84927B4D2876C40900033B3D /* FLPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLPlugin.m; sourceTree = "<group>"; };
 		84A57B492877C85700412F53 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		84A57B4B2877C89100412F53 /* LocalPods */ = {isa = PBXFileReference; lastKnownFileType = folder; path = LocalPods; sourceTree = "<group>"; };
+		84BFDCA8287924760096A406 /* ALAssetsLibrary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ALAssetsLibrary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		84BFDCAA287926730096A406 /* Lottie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Lottie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		84BFDCAC287926730096A406 /* SDWebImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SDWebImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		84BFDCAE287926730096A406 /* SVProgressHUD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SVProgressHUD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		875CD7678B7C06DEC906C429 /* Pods_Runner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Runner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9740EEB21CF90195004384FC /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Debug.xcconfig; path = Flutter/Debug.xcconfig; sourceTree = "<group>"; };
 		9740EEB31CF90195004384FC /* Generated.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Generated.xcconfig; path = Flutter/Generated.xcconfig; sourceTree = "<group>"; };
@@ -65,6 +73,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84BFDCAB287926730096A406 /* Lottie.framework in Frameworks */,
+				84BFDCAD287926730096A406 /* SDWebImage.framework in Frameworks */,
+				84BFDCAF287926730096A406 /* SVProgressHUD.framework in Frameworks */,
+				84BFDCA9287924760096A406 /* ALAssetsLibrary.framework in Frameworks */,
 				2CFD20B1A3B269413AA03956 /* Pods_Runner.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -85,6 +97,10 @@
 		758D762D72F906829120A4BB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				84BFDCAA287926730096A406 /* Lottie.framework */,
+				84BFDCAC287926730096A406 /* SDWebImage.framework */,
+				84BFDCAE287926730096A406 /* SVProgressHUD.framework */,
+				84BFDCA8287924760096A406 /* ALAssetsLibrary.framework */,
 				875CD7678B7C06DEC906C429 /* Pods_Runner.framework */,
 			);
 			name = Frameworks;
@@ -383,6 +399,7 @@
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
 				DEVELOPMENT_TEAM = AL8WG726RL;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = "/Users/admin/Library/Developer/Xcode/DerivedData/Runner-frzjcjulmsflkrhesbvbdvwvacfd/Build/Products/**";
 				INFOPLIST_FILE = Runner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -507,6 +524,7 @@
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
 				DEVELOPMENT_TEAM = AL8WG726RL;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = "/Users/admin/Library/Developer/Xcode/DerivedData/Runner-frzjcjulmsflkrhesbvbdvwvacfd/Build/Products/**";
 				INFOPLIST_FILE = Runner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -526,6 +544,7 @@
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
 				DEVELOPMENT_TEAM = AL8WG726RL;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = "/Users/admin/Library/Developer/Xcode/DerivedData/Runner-frzjcjulmsflkrhesbvbdvwvacfd/Build/Products/**";
 				INFOPLIST_FILE = Runner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
