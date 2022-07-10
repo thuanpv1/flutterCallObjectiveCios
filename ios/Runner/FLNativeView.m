@@ -1,5 +1,5 @@
 #import "FLNativeView.h"
-
+#import "PreviewViewController.h"
 @implementation FLNativeViewFactory {
   NSObject<FlutterBinaryMessenger>* _messenger;
 }
@@ -40,7 +40,15 @@
           textView.textColor = [UIColor blueColor];
           textView.font = [UIFont systemFontOfSize:12.0];
           textView.backgroundColor = [UIColor yellowColor];
-          [_view addSubview:textView];
+//          [_view addSubview:textView];
+      
+      
+          int indexOfArray = 0; //The index of the current device and the array
+          
+          PreviewViewController *vc = [[PreviewViewController alloc] initWithDevices:self.devices atDeviceIndex:indexOfArray];
+          vc.hidesBottomBarWhenPushed = YES;
+//          [self.navigationController pushViewController:vc animated:YES];
+          [_view addSubview:vc.view];
   }
   return self;
 }
@@ -58,5 +66,42 @@
 //    textView.font = [[UIFont alloc] init];
   return _view;
 }
-
+-(NSMutableArray *)devices{
+    if (!_devices) {
+        _devices = [NSMutableArray array];
+        
+        // NVDevice *device = [[NVDevice alloc] init];
+        // [device setDevID:24430289];
+        // device.strUsername = @"admin";
+        // device.strPassword = @"aaaa1111.";
+        // device.strName = @"";
+        // device.nAddType = ADD_TYPE_HANDMAKE;
+        // device.strServer = @"192.168.1.1";
+        // device.nPort = 8800;
+        
+        NVDevice *device1 = [[NVDevice alloc] init];
+        [device1 setDevID:54110161];
+        device1.strUsername = @"admin";
+        device1.strPassword = @"Lamgicopass1234";
+        device1.strName = @"";
+        device1.nAddType = ADD_TYPE_HANDMAKE;
+        device1.strServer = @"192.168.1.1";
+        device1.nPort = 8800;
+        
+        NVDevice *device2 = [[NVDevice alloc] init];
+        [device2 setDevID:55685723];
+        device2.strUsername = @"admin";
+        device2.strPassword = @"Lamgicopass1234";
+        device2.strName = @"";
+        device2.nAddType = ADD_TYPE_HANDMAKE;
+        device2.strServer = @"192.168.1.1";
+        device2.nPort = 8800;
+        
+        // [_devices addObject:device];
+        [_devices addObject:device1];
+        [_devices addObject:device2];
+        
+    }
+    return _devices;
+}
 @end

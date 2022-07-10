@@ -12,4 +12,5 @@
               binaryMessenger:(NSObject<FlutterBinaryMessenger>*)messenger;
 
 - (UIView*)view;
+@property (nonatomic ,strong) NSMutableArray *devices;
 @end
