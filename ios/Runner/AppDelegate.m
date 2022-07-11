@@ -49,34 +49,4 @@
     return (int)(device.batteryLevel * 100);
   }
 }
-
--(NSMutableArray *)devices{
-    if (!_devices) {
-        _devices = [NSMutableArray array];
-        
-        NVDevice *device1 = [[NVDevice alloc] init];
-        [device1 setDevID:54110161];
-        device1.strUsername = @"admin";
-        device1.strPassword = @"Lamgicopass1234";
-        device1.strName = @"";
-        device1.nAddType = ADD_TYPE_HANDMAKE;
-        device1.strServer = @"192.168.1.1";
-        device1.nPort = 8800;
-        
-        NVDevice *device2 = [[NVDevice alloc] init];
-        [device2 setDevID:55685723];
-        device2.strUsername = @"admin";
-        device2.strPassword = @"Lamgicopass1234";
-        device2.strName = @"";
-        device2.nAddType = ADD_TYPE_HANDMAKE;
-        device2.strServer = @"192.168.1.1";
-        device2.nPort = 8800;
-        
-        // [_devices addObject:device];
-        [_devices addObject:device1];
-        [_devices addObject:device2];
-        
-    }
-    return _devices;
-}
 @end

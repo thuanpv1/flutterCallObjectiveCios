@@ -1,7 +1,8 @@
 #import "FLNativeView.h"
 #import "PreviewViewController.h"
 static PreviewViewController *vc = nil;
-static int teststatic = 0;
+#define PASSWORD_DEFAULT "Lamgicopass1234";
+#define ACCOUNT_DEFAULT "admin";
 
 @implementation FLNativeViewFactory {
   NSObject<FlutterBinaryMessenger>* _messenger;
@@ -40,14 +41,25 @@ static int teststatic = 0;
          _view = [[UIView alloc] initWithFrame:CGRectMake(0,0,100,100)];
          _view.backgroundColor = [UIColor redColor];
           NSLog(@"running to hre ok================");
-          // UILabel *textView = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
-          // textView.text = @"HIHI";
-          // textView.textColor = [UIColor blueColor];
-          // textView.font = [UIFont systemFontOfSize:12.0];
-          // textView.backgroundColor = [UIColor yellowColor];
-          // [_view addSubview:textView];
-      
-      
+          NSString *serial = [args objectForKey:@"serial"];
+          NSArray *listItems = [serial componentsSeparatedByString:@"|"];
+          if (!_devices) {
+              _devices = [NSMutableArray array];
+          }
+          for (id object in listItems) {
+              // do something with object
+              NVDevice *device1 = [[NVDevice alloc] init];
+              [device1 setDevID:[object integerValue]];
+              device1.strUsername = @ACCOUNT_DEFAULT;
+              device1.strPassword = @PASSWORD_DEFAULT;
+              device1.strName = object;
+              device1.nAddType = ADD_TYPE_HANDMAKE;
+              device1.strServer = @"192.168.1.1";
+              device1.nPort = 8800;
+              [_devices addObject:device1];
+          }
+          NSLog(@"serial ===%@", serial);
+
           int indexOfArray = 0; //The index of the current device and the array
           
           vc = [[PreviewViewController alloc] initWithDevices:self.devices atDeviceIndex:indexOfArray];
@@ -59,61 +71,6 @@ static int teststatic = 0;
 }
 
 - (UIView*)view {
-//    _view = [[UIView alloc] initWithFrame:CGRectMake(0,0,100,100)];
-//    _view.backgroundColor = [UIColor redColor];
-//    [_view addSubview:vc.view];
-    NSLog(@"running into view function");
-    if (teststatic == 0) {
-        NSLog(@"-----0-----");
-    }
-    if (teststatic == 1) {
-        NSLog(@"-----1-----");
-    }
-    if (teststatic == 2) {
-        NSLog(@"-----2-----");
-    }
-    if (teststatic == 3) {
-        NSLog(@"-----3-----");
-    }
   return vc.view;
-}
-
--(NSMutableArray *)devices{
-    if (!_devices) {
-        _devices = [NSMutableArray array];
-        
-        // NVDevice *device = [[NVDevice alloc] init];
-        // [device setDevID:24430289];
-        // device.strUsername = @"admin";
-        // device.strPassword = @"aaaa1111.";
-        // device.strName = @"";
-        // device.nAddType = ADD_TYPE_HANDMAKE;
-        // device.strServer = @"192.168.1.1";
-        // device.nPort = 8800;
-        
-        NVDevice *device1 = [[NVDevice alloc] init];
-        [device1 setDevID:54110161];
-        device1.strUsername = @"admin";
-        device1.strPassword = @"Lamgicopass1234";
-        device1.strName = @"";
-        device1.nAddType = ADD_TYPE_HANDMAKE;
-        device1.strServer = @"192.168.1.1";
-        device1.nPort = 8800;
-        
-        NVDevice *device2 = [[NVDevice alloc] init];
-        [device2 setDevID:55685723];
-        device2.strUsername = @"admin";
-        device2.strPassword = @"Lamgicopass1234";
-        device2.strName = @"";
-        device2.nAddType = ADD_TYPE_HANDMAKE;
-        device2.strServer = @"192.168.1.1";
-        device2.nPort = 8800;
-        
-        // [_devices addObject:device];
-        [_devices addObject:device1];
-        [_devices addObject:device2];
-        
-    }
-    return _devices;
 }
 @end

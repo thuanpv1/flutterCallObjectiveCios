@@ -53,7 +53,7 @@ class _MyHomePageState extends State<MyHomePage> {
   String viewType = '<platform-view-type>';
   // Pass parameters to the platform side.
   final Map<String, dynamic> creationParams = <String, dynamic>{
-    'serial': '00900998887|4343434343'
+    'serial': '55685723|54110161'
   };
 
   //final dynamic creationParams = 1234;
