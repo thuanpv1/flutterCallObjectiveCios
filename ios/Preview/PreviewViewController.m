@@ -61,7 +61,7 @@ const static NSString * const kIsWaitFirstFrame = @"isWaitFirstFrame";
 
 @interface PreviewViewController ()<MultiPreviewEvents,PreviewEvents>
 
-@property (nonatomic,strong) MultiPreviewPlayer *player;
+//@property (nonatomic,strong) MultiPreviewPlayer *player;
 @property (nonatomic,strong) NSMutableArray *deviceInfos;
 @property (nonatomic,assign) int indexOfArray;
 @property (nonatomic,assign) int groupIndex;
@@ -226,6 +226,11 @@ const static NSString * const kIsWaitFirstFrame = @"isWaitFirstFrame";
     _player.previewEvents       = self;
     [self.view addSubview:_player.view];
 }
+
+- (UIView*) getPlayerView {
+    return _player.view;
+}
+
 -(void)initChannelUI{
     _componentManagers = [NSMutableArray new];
     for (int index = 0; index < 4; index++) {
@@ -650,7 +655,7 @@ const static NSString * const kIsWaitFirstFrame = @"isWaitFirstFrame";
     self.deviceInfos[deviceIndex][kMute] = @(isMuting);
     [self.player mute:isMuting atIndex:panoIndex];
 }
-#pragma mark - 协议函数: <PreviewEvents>
+#pragma mark - Protocol function: <PreviewEvents>
 - (void) previewIdle:(BOOL)isIdle userInfo:(nullable id)userInfo atIndex:(int)index{
     int deviceIndex = [userInfo intValue];
     

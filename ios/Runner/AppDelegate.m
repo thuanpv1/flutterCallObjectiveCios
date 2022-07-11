@@ -1,5 +1,6 @@
 #import "AppDelegate.h"
 #import "FLNativeView.h"
+#import "PreviewViewController.h"
 #import "GeneratedPluginRegistrant.h"
 
 @implementation AppDelegate
@@ -25,11 +26,20 @@
             } else {
               result(@(batteryLevel));
             }
-          } else if ([@"playMultimedia" isEqualToString:call.method]) {
-            // play video here
-//            vc = [[PreviewViewController alloc] initWithDevices:self.devices atDeviceIndex:0];
-//            vc.hidesBottomBarWhenPushed = YES;
-//              teststatic = teststatic + 1;
+          } else if ([@"nextPage" isEqualToString:call.method]) {
+              
+              NSNumber *index = [call.arguments objectForKey:@"index"];
+              // vc = [[PreviewViewController alloc] initWithDevices:self.devices atDeviceIndex:index];
+              // [vc initWithDevices:self.devices atDeviceIndex:index];
+              // [vc returnAndreleaseAll];
+              // [vc startWithDeviceIndex: index mute: true hd:false];
+              // [vc updatePageWithDeviceIndex: 5 onPano:false];
+              
+              // update pagination
+              [vc updatePageWithDeviceIndex:index onPano:YES];
+              vc.player.currentSelected = index;
+              //vc.player.currentPano
+//              [vc.player pano:YES];
             
           } else {
             result(FlutterMethodNotImplemented);

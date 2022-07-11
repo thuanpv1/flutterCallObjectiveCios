@@ -69,8 +69,8 @@ typedef enum : NSUInteger {
 @property (nonatomic,weak,nullable) id<PreviewEvents> previewEvents;
 @property (nonatomic,weak,nullable) id<MultiPreviewEvents> multiPreviewEvents;
 
--(void)resetRowColumn:(BOOL)multi;      // 重置行数和列数 YES:2x2 NO:1*1(请慎用,尽量不要多次重复调用)
--(void)resetData:(int)index;            // 对全景库显示数据reset
+-(void)resetRowColumn:(BOOL)multi;      // Reset the number of rows and columns YES: 2x2 NO: 1*1 (please use it with caution, try not to call it multiple times)
+-(void)resetData:(int)index;            // Display data reset to the panorama library
 -(void)resetDataAll;
 -(void)start:(int)index
        lanIP:(NSString*)lanIP

@@ -53,7 +53,7 @@ class _MyHomePageState extends State<MyHomePage> {
   String viewType = '<platform-view-type>';
   // Pass parameters to the platform side.
   final Map<String, dynamic> creationParams = <String, dynamic>{
-    'serial': '55685723|54110161'
+    'serial': '55685723|54110161|55685724|54110162|55687723|55685723'
   };
 
   //final dynamic creationParams = 1234;
@@ -79,6 +79,14 @@ class _MyHomePageState extends State<MyHomePage> {
   Future<void> playMultimedia() async {
     try {
       await platform.invokeMethod('playMultimedia');
+    } on PlatformException catch (e) {
+      print('the method channel is not implemented');
+    }
+  }
+
+    Future<void> nextPage() async {
+    try {
+      await platform.invokeMethod('nextPage', {'index': 4});
     } on PlatformException catch (e) {
       print('the method channel is not implemented');
     }
@@ -123,7 +131,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: playMultimedia,
+        onPressed: nextPage,
         tooltip: 'Increment',
         child: const Icon(Icons.play_arrow_outlined),
       ), // This trailing comma makes auto-formatting nicer for build methods.

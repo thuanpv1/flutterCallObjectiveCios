@@ -1,8 +1,9 @@
 #import "FLNativeView.h"
 #import "PreviewViewController.h"
-static PreviewViewController *vc = nil;
 #define PASSWORD_DEFAULT "Lamgicopass1234";
 #define ACCOUNT_DEFAULT "admin";
+
+PreviewViewController *vc = nil;
 
 @implementation FLNativeViewFactory {
   NSObject<FlutterBinaryMessenger>* _messenger;
