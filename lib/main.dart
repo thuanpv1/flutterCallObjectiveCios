@@ -52,11 +52,11 @@ class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
   String viewType = '<platform-view-type>';
   // Pass parameters to the platform side.
-  //final Map<String, dynamic> creationParams = <String, dynamic>{
-  //  'serial': '00900998887|4343434343'
-  //};
+  final Map<String, dynamic> creationParams = <String, dynamic>{
+    'serial': '00900998887|4343434343'
+  };
 
-  final dynamic creationParams = 1234;
+  //final dynamic creationParams = 1234;
 
   static const platform = MethodChannel('samples.flutter.dev/battery');
   // Get battery level.

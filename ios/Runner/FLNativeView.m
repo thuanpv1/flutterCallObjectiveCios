@@ -14,7 +14,9 @@ static int teststatic = 0;
   }
   return self;
 }
-
+- (NSObject<FlutterMessageCodec>*)createArgsCodec {
+    return FlutterStandardMessageCodec.sharedInstance;
+}
 - (NSObject<FlutterPlatformView>*)createWithFrame:(CGRect)frame
                                    viewIdentifier:(int64_t)viewId
                                         arguments:(id _Nullable)args {
