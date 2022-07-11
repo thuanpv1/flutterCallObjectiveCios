@@ -1,5 +1,8 @@
 #import "FLNativeView.h"
 #import "PreviewViewController.h"
+static PreviewViewController *vc = nil;
+static int teststatic = 0;
+
 @implementation FLNativeViewFactory {
   NSObject<FlutterBinaryMessenger>* _messenger;
 }
@@ -32,40 +35,47 @@
                     arguments:(id _Nullable)args
               binaryMessenger:(NSObject<FlutterBinaryMessenger>*)messenger {
   if (self = [super init]) {
-        _view = [[UIView alloc] initWithFrame:CGRectMake(0,0,100,100)];
-        _view.backgroundColor = [UIColor redColor];
+         _view = [[UIView alloc] initWithFrame:CGRectMake(0,0,100,100)];
+         _view.backgroundColor = [UIColor redColor];
           NSLog(@"running to hre ok================");
-          UILabel *textView = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
-          textView.text = @"HIHI";
-          textView.textColor = [UIColor blueColor];
-          textView.font = [UIFont systemFontOfSize:12.0];
-          textView.backgroundColor = [UIColor yellowColor];
-//          [_view addSubview:textView];
+          // UILabel *textView = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
+          // textView.text = @"HIHI";
+          // textView.textColor = [UIColor blueColor];
+          // textView.font = [UIFont systemFontOfSize:12.0];
+          // textView.backgroundColor = [UIColor yellowColor];
+          // [_view addSubview:textView];
       
       
           int indexOfArray = 0; //The index of the current device and the array
           
-          PreviewViewController *vc = [[PreviewViewController alloc] initWithDevices:self.devices atDeviceIndex:indexOfArray];
+          vc = [[PreviewViewController alloc] initWithDevices:self.devices atDeviceIndex:indexOfArray];
           vc.hidesBottomBarWhenPushed = YES;
-//          [self.navigationController pushViewController:vc animated:YES];
+          //[self.navigationController pushViewController:vc animated:YES];
           [_view addSubview:vc.view];
   }
   return self;
 }
 
 - (UIView*)view {
-//    textView.scrollEnabled = YES;
-//    textView.alwaysBounceVertical = YES;
-//    textView.editable = YES;
-//    textView.clipsToBounds = YES;
-//    textView.keyboardDismissMode = UIScrollViewKeyboardDismissModeInteractive;
-//    textView.keyboardType = UIKeyboardTypeDefault;
-//    [textView setText:@"hihihihihihi"];
-//    [textView setFont:[UIFont fontWithName:@"ArialMT" size:16]];
-//    textView.text = @"hihi";
-//    textView.font = [[UIFont alloc] init];
-  return _view;
+//    _view = [[UIView alloc] initWithFrame:CGRectMake(0,0,100,100)];
+//    _view.backgroundColor = [UIColor redColor];
+//    [_view addSubview:vc.view];
+    NSLog(@"running into view function");
+    if (teststatic == 0) {
+        NSLog(@"-----0-----");
+    }
+    if (teststatic == 1) {
+        NSLog(@"-----1-----");
+    }
+    if (teststatic == 2) {
+        NSLog(@"-----2-----");
+    }
+    if (teststatic == 3) {
+        NSLog(@"-----3-----");
+    }
+  return vc.view;
 }
+
 -(NSMutableArray *)devices{
     if (!_devices) {
         _devices = [NSMutableArray array];

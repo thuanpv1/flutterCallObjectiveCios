@@ -52,7 +52,12 @@ class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
   String viewType = '<platform-view-type>';
   // Pass parameters to the platform side.
-  final Map<String, dynamic> creationParams = <String, dynamic>{};
+  //final Map<String, dynamic> creationParams = <String, dynamic>{
+  //  'serial': '00900998887|4343434343'
+  //};
+
+  final dynamic creationParams = 1234;
+
   static const platform = MethodChannel('samples.flutter.dev/battery');
   // Get battery level.
   String _batteryLevel = 'Unknown battery level.';
@@ -70,6 +75,15 @@ class _MyHomePageState extends State<MyHomePage> {
       _batteryLevel = batteryLevel;
     });
   }
+
+  Future<void> playMultimedia() async {
+    try {
+      await platform.invokeMethod('playMultimedia');
+    } on PlatformException catch (e) {
+      print('the method channel is not implemented');
+    }
+  }
+
   void _incrementCounter() {
     setState(() {
       // This call to setState tells the Flutter framework that something has
@@ -90,57 +104,28 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
+      // appBar: AppBar(
+      //   // Here we take the value from the MyHomePage object that was created by
+      //   // the App.build method, and use it to set our appbar title.
+      //   title: Text(widget.title),
+      // ),
       body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-            Text('Pin level == ' + _batteryLevel),
-            Container(
-              width: 200,
-              height: 200,
-              color: Colors.yellow,
-              child: UiKitView(
-              viewType: viewType,
-              layoutDirection: TextDirection.ltr,
-              creationParams: creationParams,
-              creationParamsCodec: const StandardMessageCodec(),
-            ),
-            )
-          ],
+        child: Container(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          color: Colors.yellow,
+          child: UiKitView(
+          viewType: viewType,
+          layoutDirection: TextDirection.ltr,
+          creationParams: creationParams,
+          creationParamsCodec: const StandardMessageCodec(),
+        ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _getBatteryLevel,
+        onPressed: playMultimedia,
         tooltip: 'Increment',
-        child: const Icon(Icons.add),
+        child: const Icon(Icons.play_arrow_outlined),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }

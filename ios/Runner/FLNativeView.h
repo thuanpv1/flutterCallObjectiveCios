@@ -1,4 +1,7 @@
 #import <Flutter/Flutter.h>
+#import "PreviewViewController.h"
+static PreviewViewController *vc;
+static int teststatic;
 
 @interface FLNativeViewFactory : NSObject <FlutterPlatformViewFactory>
 - (instancetype)initWithMessenger:(NSObject<FlutterBinaryMessenger>*)messenger;
