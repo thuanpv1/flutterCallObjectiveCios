@@ -12,6 +12,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface PreviewViewController : UIViewController
+-(instancetype)initViewAllCamera:(NSArray<NVDevice*>*)devices isShowToolBtns: (BOOL) isShowToolBtns;
 -(instancetype)initWithDevices:(NSArray<NVDevice*>*)devices atDeviceIndex:(int)index;
 -(void)returnAndreleaseAll;
 -(void)updatePageWithDeviceIndex:(int)deviceIndex onPano:(BOOL)pano;

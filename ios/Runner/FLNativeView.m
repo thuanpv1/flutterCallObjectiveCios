@@ -44,6 +44,8 @@ NSMutableArray *allDevices = nil;
          _view.backgroundColor = [UIColor redColor];
           NSLog(@"running to hre ok================");
           NSString *serial = [args objectForKey:@"serial"];
+          NSString *viewMode = [args objectForKey:@"viewMode"];
+          NSString *isShowToolBtns = [args objectForKey:@"isShowToolBtns"];
           NSArray *listItems = [serial componentsSeparatedByString:@"|"];
           if (!_devices) {
               _devices = [NSMutableArray array];
@@ -67,10 +69,14 @@ NSMutableArray *allDevices = nil;
           NSLog(@"serial ===%@", serial);
 
           int indexOfArray = 0; //The index of the current device and the array
-          
-          vc = [[PreviewViewController alloc] initWithDevices:self.devices atDeviceIndex:indexOfArray];
+          if ([viewMode isEqualToString:@"multi"]) {
+              if ([isShowToolBtns isEqualToString:@"true"]) {
+                  vc = [[PreviewViewController alloc] initViewAllCamera:self.devices isShowToolBtns: YES];
+              } else vc = [[PreviewViewController alloc] initViewAllCamera:self.devices isShowToolBtns: NO];
+          } else {
+              vc = [[PreviewViewController alloc] initWithDevices:self.devices atDeviceIndex:indexOfArray];
+          }
           vc.hidesBottomBarWhenPushed = YES;
-          //[self.navigationController pushViewController:vc animated:YES];
           [_view addSubview:vc.view];
   }
   return self;

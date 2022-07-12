@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutterplugin/view_multi_camera.dart';
+
+import 'view_single_camera.dart';
 
 void main() {
   runApp(const MyApp());
@@ -49,40 +52,13 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  bool isSingle = true;
   String viewType = '<platform-view-type>';
-  // Pass parameters to the platform side.
   final Map<String, dynamic> creationParams = <String, dynamic>{
     'serial': '55685723|54110161|55685724|54110162|55687723|55685723'
   };
 
-  //final dynamic creationParams = 1234;
-
   static const platform = MethodChannel('samples.flutter.dev/battery');
-  // Get battery level.
-  String _batteryLevel = 'Unknown battery level.';
-
-  Future<void> _getBatteryLevel() async {
-    String batteryLevel;
-    try {
-      final int result = await platform.invokeMethod('getBatteryLevel');
-      batteryLevel = 'Battery level at $result % .';
-    } on PlatformException catch (e) {
-      batteryLevel = "Failed to get battery level: '${e.message}'.";
-    }
-
-    setState(() {
-      _batteryLevel = batteryLevel;
-    });
-  }
-
-  Future<void> playMultimedia() async {
-    try {
-      await platform.invokeMethod('playMultimedia');
-    } on PlatformException catch (e) {
-      print('the method channel is not implemented');
-    }
-  }
 
     Future<void> nextPage() async {
     try {
@@ -92,46 +68,36 @@ class _MyHomePageState extends State<MyHomePage> {
     }
   }
 
-  void _incrementCounter() {
+  void swithView() {
     setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
+      isSingle = !isSingle;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
       // appBar: AppBar(
       //   // Here we take the value from the MyHomePage object that was created by
       //   // the App.build method, and use it to set our appbar title.
       //   title: Text(widget.title),
       // ),
-      body: Center(
-        child: Container(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
-          color: Colors.yellow,
-          child: UiKitView(
-          viewType: viewType,
-          layoutDirection: TextDirection.ltr,
-          creationParams: creationParams,
-          creationParamsCodec: const StandardMessageCodec(),
-        ),
-        ),
+      body: Stack(
+        children: [
+          if (isSingle) SingleCameraView(),
+          if (!isSingle) MultiCameraView(),
+          Container(width: MediaQuery.of(context).size.width, height: 60, color: Colors.green,
+          child: Row(
+            children: [
+              IconButton(onPressed: () {}, icon: const Icon(Icons.arrow_back, color: Colors.white,)),
+              Center(child: const Text('Camera1', style: TextStyle(color: Colors.white),))
+            ],
+          ),),
+          
+        ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: nextPage,
+        onPressed: swithView,
         tooltip: 'Increment',
         child: const Icon(Icons.play_arrow_outlined),
       ), // This trailing comma makes auto-formatting nicer for build methods.

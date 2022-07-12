@@ -102,6 +102,94 @@ const static NSString * const kIsWaitFirstFrame = @"isWaitFirstFrame";
 
 @implementation PreviewViewController
 
+- (instancetype)initViewAllCamera:(NSArray<NVDevice*>*)devices isShowToolBtns: (BOOL) isShowToolBtns{
+    self = [super init];
+    if(self){
+        int deviceIndex = 0;
+        _isOnPano = NO;
+        
+        [self initPlayer];
+        [self initChannelUI];
+        if (isShowToolBtns) [self initToolButton];
+        //[self initPtz];
+        //[self initBottomButton];
+        //[self initPresetPortrait];
+       // Refresh the device information list
+        NSMutableArray *deviceIDs = [NSMutableArray new];
+        NSEnumerator *enumer = devices.objectEnumerator;
+        NVDevice *device;
+        NSMutableArray *deviceFull = [NSMutableArray new];
+        int group = 0;
+        int indexOfGroup = 0;
+        while (nil != (device = enumer.nextObject)) {
+            NSMutableDictionary *infoFull = [NSMutableDictionary new];
+            infoFull[kNVDevice] = device;
+            infoFull[kGroup] = @(group);
+            infoFull[kIndexOfGroup] = @(indexOfGroup);
+            infoFull[kMute] = @(YES);
+            ++indexOfGroup;
+            if(indexOfGroup >= 4){
+                indexOfGroup = 0;
+                ++group;
+            }
+            [deviceFull addObject:infoFull];
+            [deviceIDs addObject:@(device.NDevID)];
+        }
+        _deviceInfos = deviceFull;
+        _indexOfArray = deviceIndex; // the position of the device in the device list
+        _groupIndex = deviceIndex / 4; // Which group the device is in
+        _indexOfGroup = deviceIndex % 4; // The position of the device in the group
+        
+        int groupCount = (int)_deviceInfos.count / 4;
+        if(_deviceInfos.count % 4){
+            groupCount++;
+        }
+        int deviceCountInGrounp = _groupIndex+1 >= groupCount ? _deviceInfos.count % 4 : 4;
+        if(0 == deviceCountInGrounp){
+            deviceCountInGrounp = 4;
+        }
+        
+       
+       // device navigation bar title
+        device = devices[deviceIndex];
+        NSString *deviceName = nil == device.strName || 0 == device.strName.length ? [NSString stringWithFormat:@"%d", device.NDevID] : device.strName;
+        self.title = deviceName;
+       
+        
+        // update pagination
+        [self updatePageWithDeviceIndex:deviceIndex onPano:NO];
+        self.player.currentSelected = _indexOfGroup;
+        [self.player pano:YES]; // view all cameras
+        // update the channel control
+        for (int i = 0; i < 4; i++) {
+            if(i >= deviceCountInGrounp){
+                break;
+            }
+            
+            PreviewComponentManager *componentManager = (PreviewComponentManager*)self.componentManagers[i];
+            int di = _groupIndex * 4 + i;
+            device = devices[di];
+            if(ONLINE_STAT_OFF == device.nOnlineStatus){
+                if(i == _indexOfGroup) self.isOffline = YES;
+                
+                [componentManager hidden:NO control:PreviewComponentOffline];
+                
+                continue;
+            }
+            else if(i == _indexOfGroup){
+                [componentManager updateConstraints:YES];
+                [self startWithDeviceIndex:deviceIndex mute:YES hd:NO];
+            }
+            else{
+                [componentManager hidden:NO control:PreviewComponentPlay];
+            }
+        }
+        [_player pano:NO];
+        
+    }
+    return self;
+}
+
 - (instancetype)initWithDevices:(NSArray<NVDevice*>*)devices atDeviceIndex:(int)deviceIndex{
     self = [super init];
     if(self){
