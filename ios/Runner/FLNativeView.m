@@ -45,14 +45,28 @@ NSMutableArray *allDevices = nil;
           NSLog(@"running to hre ok================");
           NSString *serial = [args objectForKey:@"serial"];
           NSString *viewMode = [args objectForKey:@"viewMode"];
-          NSString *isShowToolBtns = [args objectForKey:@"isShowToolBtns"];
+          NSString *isShowToolBtnsTemp = [args objectForKey:@"isShowToolBtns"];
+          bool isShowToolBtns = false;
+          if ([isShowToolBtnsTemp isEqualToString:@"true"]) {
+              isShowToolBtns = true;
+          }
+          NSNumber *deviceIndexTemp = [args objectForKey:@"deviceIndex"];
+          int deviceIndex = 0;
+          if (![deviceIndexTemp isEqual:nil]) {
+              deviceIndex = [deviceIndexTemp intValue];
+          }
+          NSString *isMultiViewTemp = [args objectForKey:@"isMultiView"];
+          bool isMultiView = false;
+          if ([isMultiViewTemp isEqualToString:@"true"]) {
+              isMultiView = true;
+          }
           NSArray *listItems = [serial componentsSeparatedByString:@"|"];
           if (!_devices) {
               _devices = [NSMutableArray array];
           }
-      if (!allDevices) {
-          allDevices = [NSMutableArray array];
-      }
+          if (!allDevices) {
+              allDevices = [NSMutableArray array];
+          }
           for (id object in listItems) {
               // do something with object
               NVDevice *device1 = [[NVDevice alloc] init];
@@ -70,9 +84,7 @@ NSMutableArray *allDevices = nil;
 
           int indexOfArray = 0; //The index of the current device and the array
           if ([viewMode isEqualToString:@"multi"]) {
-              if ([isShowToolBtns isEqualToString:@"true"]) {
-                  vc = [[PreviewViewController alloc] initViewAllCamera:self.devices isShowToolBtns: YES];
-              } else vc = [[PreviewViewController alloc] initViewAllCamera:self.devices isShowToolBtns: NO];
+              vc = [[PreviewViewController alloc] initViewAllCamera:self.devices atDeviceIndex:deviceIndex isShowToolBtns:isShowToolBtns isMultiView:isMultiView];
           } else {
               vc = [[PreviewViewController alloc] initWithDevices:self.devices atDeviceIndex:indexOfArray];
           }

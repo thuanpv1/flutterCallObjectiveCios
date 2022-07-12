@@ -13,7 +13,9 @@ class _MultiCameraViewState extends State<MultiCameraView> {
   final Map<String, dynamic> creationParams = <String, dynamic>{
     'serial': '55685723|54110161',
     'viewMode': 'multi',
-    'isShowToolBtns': 'false'
+    'isShowToolBtns': 'false',
+    'deviceIndex': 0,
+    'isMultiView': 'true'
   };
 
   @override

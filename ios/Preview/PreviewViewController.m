@@ -102,10 +102,9 @@ const static NSString * const kIsWaitFirstFrame = @"isWaitFirstFrame";
 
 @implementation PreviewViewController
 
-- (instancetype)initViewAllCamera:(NSArray<NVDevice*>*)devices isShowToolBtns: (BOOL) isShowToolBtns{
+- (instancetype)initViewAllCamera:(NSArray<NVDevice*>*)devices atDeviceIndex:(int)deviceIndex isShowToolBtns: (BOOL) isShowToolBtns isMultiView: (BOOL) isMultiView {
     self = [super init];
     if(self){
-        int deviceIndex = 0;
         _isOnPano = NO;
         
         [self initPlayer];
@@ -159,7 +158,7 @@ const static NSString * const kIsWaitFirstFrame = @"isWaitFirstFrame";
         // update pagination
         [self updatePageWithDeviceIndex:deviceIndex onPano:NO];
         self.player.currentSelected = _indexOfGroup;
-        [self.player pano:YES]; // view all cameras
+        [self.player pano:YES];
         // update the channel control
         for (int i = 0; i < 4; i++) {
             if(i >= deviceCountInGrounp){
@@ -184,7 +183,7 @@ const static NSString * const kIsWaitFirstFrame = @"isWaitFirstFrame";
                 [componentManager hidden:NO control:PreviewComponentPlay];
             }
         }
-        [_player pano:NO];
+        [_player pano:!isMultiView];
         
     }
     return self;
@@ -377,7 +376,7 @@ const static NSString * const kIsWaitFirstFrame = @"isWaitFirstFrame";
     [stack.heightAnchor constraintEqualToConstant:50].active = YES;
 
   
-    [stack addArrangedSubview:[self creatBtn:@"preview_btn_sd" selectImage:@"preview_btn_hd" tag:1000]];
+    [stack addArrangedSubview:[self creatBtn:@"preview_btn_sd_en" selectImage:@"preview_btn_hd_dis_en" tag:1000]];
     [stack addArrangedSubview:[self creatBtn:@"preview_btn_openvoice_white" selectImage:@"preview_btn_closevoice_white" tag:1001]];
     [stack addArrangedSubview:[self creatBtn:@"preview_btn_fourscreens" selectImage:@"preview_btn_singlescreen" tag:1002]];
 
