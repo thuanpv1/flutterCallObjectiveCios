@@ -1,7 +1,7 @@
 #import <Flutter/Flutter.h>
 #import "PreviewViewController.h"
 extern PreviewViewController *vc;
-
+extern NSMutableArray *allDevices;
 @interface FLNativeViewFactory : NSObject <FlutterPlatformViewFactory>
 - (instancetype)initWithMessenger:(NSObject<FlutterBinaryMessenger>*)messenger;
 @end

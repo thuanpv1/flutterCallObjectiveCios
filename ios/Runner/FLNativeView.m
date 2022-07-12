@@ -4,6 +4,7 @@
 #define ACCOUNT_DEFAULT "admin";
 
 PreviewViewController *vc = nil;
+NSMutableArray *allDevices = nil;
 
 @implementation FLNativeViewFactory {
   NSObject<FlutterBinaryMessenger>* _messenger;
@@ -47,6 +48,9 @@ PreviewViewController *vc = nil;
           if (!_devices) {
               _devices = [NSMutableArray array];
           }
+      if (!allDevices) {
+          allDevices = [NSMutableArray array];
+      }
           for (id object in listItems) {
               // do something with object
               NVDevice *device1 = [[NVDevice alloc] init];
@@ -58,6 +62,7 @@ PreviewViewController *vc = nil;
               device1.strServer = @"192.168.1.1";
               device1.nPort = 8800;
               [_devices addObject:device1];
+              [allDevices addObject:device1];
           }
           NSLog(@"serial ===%@", serial);
 

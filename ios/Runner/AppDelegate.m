@@ -27,20 +27,9 @@
               result(@(batteryLevel));
             }
           } else if ([@"nextPage" isEqualToString:call.method]) {
-              
               NSNumber *index = [call.arguments objectForKey:@"index"];
-              // vc = [[PreviewViewController alloc] initWithDevices:self.devices atDeviceIndex:index];
-              // [vc initWithDevices:self.devices atDeviceIndex:index];
-              // [vc returnAndreleaseAll];
-              // [vc startWithDeviceIndex: index mute: true hd:false];
-              // [vc updatePageWithDeviceIndex: 5 onPano:false];
-              
-              // update pagination
-              [vc updatePageWithDeviceIndex:index onPano:YES];
-              vc.player.currentSelected = index;
-              //vc.player.currentPano
-//              [vc.player pano:YES];
-            
+              [vc returnAndreleaseAll];
+              [vc initWithDevices:allDevices atDeviceIndex:[index intValue]];
           } else {
             result(FlutterMethodNotImplemented);
           }
