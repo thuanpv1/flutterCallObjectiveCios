@@ -1018,7 +1018,7 @@
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
 				DEVELOPMENT_TEAM = AL8WG726RL;
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = "/Users/admin/Library/Developer/Xcode/DerivedData/Runner-frzjcjulmsflkrhesbvbdvwvacfd/Build/Products/**";
+				FRAMEWORK_SEARCH_PATHS = "/Users/admin/Library/Developer/Xcode/DerivedData/Runner-fxdfukdbuesqbkdxfmjqbctmzteq/Build/Products/**";
 				GCC_PREFIX_HEADER = Runner/PrefixHeader.pch;
 				INFOPLIST_FILE = Runner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1151,7 +1151,7 @@
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
 				DEVELOPMENT_TEAM = AL8WG726RL;
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = "/Users/admin/Library/Developer/Xcode/DerivedData/Runner-frzjcjulmsflkrhesbvbdvwvacfd/Build/Products/**";
+				FRAMEWORK_SEARCH_PATHS = "/Users/admin/Library/Developer/Xcode/DerivedData/Runner-fxdfukdbuesqbkdxfmjqbctmzteq/Build/Products/**";
 				GCC_PREFIX_HEADER = Runner/PrefixHeader.pch;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1196,7 +1196,7 @@
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
 				DEVELOPMENT_TEAM = AL8WG726RL;
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = "/Users/admin/Library/Developer/Xcode/DerivedData/Runner-frzjcjulmsflkrhesbvbdvwvacfd/Build/Products/**";
+				FRAMEWORK_SEARCH_PATHS = "/Users/admin/Library/Developer/Xcode/DerivedData/Runner-fxdfukdbuesqbkdxfmjqbctmzteq/Build/Products/**";
 				GCC_PREFIX_HEADER = Runner/PrefixHeader.pch;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
